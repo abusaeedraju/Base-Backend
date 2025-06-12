@@ -9,11 +9,11 @@ import { parseBodyMiddleware } from "../../middleware/parseBodyData";
 
 const route = Router()
 
-route.post('/create', validateRequest(UserValidation.createValidation), userController.createUserController)//checked
+route.post('/create', validateRequest(UserValidation.createValidation), userController.createUserController)//...
 
-route.put('/change-password', auth(Role.USER || Role.ADMIN), validateRequest(UserValidation.changePasswordValidation), userController.changePasswordController)//checked
+route.put('/change-password', auth(Role.USER || Role.ADMIN), validateRequest(UserValidation.changePasswordValidation), userController.changePasswordController)//...
 
 route.put("/me", auth(Role.USER || Role.ADMIN), fileUploader.uploadProfileImage, parseBodyMiddleware, userController.updateUserController)//...
-route.get("/me", auth(), userController.getMyProfileController)//checked
+route.get("/me", auth(), userController.getMyProfileController)//...
 
 export const userRoutes = route

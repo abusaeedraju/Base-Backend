@@ -121,7 +121,10 @@ const resendOtp = async (payload: { email: string }) => {
 };
 
 
-const resetPassword = async (payload: { token: string; password: string }) => {
+const resetPassword = async (payload: { token: string; password: string , confirm_password: string }) => {
+  if(payload.password !== payload.confirm_password){
+    throw new ApiError(StatusCodes.BAD_REQUEST, "Password and confirm password does not match")
+  }
 const {email} = jwtHelpers.tokenDecoder(payload.token) as JwtPayload;
 
   const findUser = await prisma.user.findUnique({
