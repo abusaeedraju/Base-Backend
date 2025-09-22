@@ -25,6 +25,8 @@ model User {
   latitude         Float?
   longitude        Float?
   location         String?
+  connectAccountId String?
+  customerId       String?
   isVerified       Boolean         @default(false)
   createdAt        DateTime        @default(now())
   updatedAt        DateTime        @updatedAt
@@ -44,13 +46,13 @@ model Otp {
 }
 
 model Service {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   name        String
   description String
   price       Float
   image       String?
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Notifications {
